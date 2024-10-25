@@ -1,0 +1,11 @@
+{
+  "exportall.config.folderListener": [
+    "/app/models",
+    "/app/components",
+    "/app/redux/slices",
+    "/app/ui/components",
+    "/app/lib/redux",
+    "/app/lib/services",
+    "/app/lib/hooks"
+  ]
+}
