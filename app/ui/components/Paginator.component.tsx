@@ -1,5 +1,6 @@
 interface PaginatorProps {
   page: number
+  styles?: string
   goToPrevPage: () => void
   goToNextPage: () => void
   totalPages: number
@@ -9,6 +10,7 @@ interface PaginatorProps {
 
 export const Paginator = ({
   page,
+  styles,
   goToPrevPage,
   goToNextPage,
   totalPages,
@@ -16,7 +18,7 @@ export const Paginator = ({
   hasNextPage = true
 }: PaginatorProps) => {
   return (
-    <div className='inline-flex items-center justify-center gap-3'>
+    <div className={`inline-flex items-center justify-center gap-3 ${styles}`}>
       <div
         onClick={goToPrevPage}
         className={`inline-flex size-8 items-center justify-center rounded border border-gray-100 bg-white text-gray-900 rtl:rotate-180 dark:border-gray-800 dark:bg-gray-900 dark:text-white cursor-pointer ${

@@ -41,8 +41,8 @@ const SingleSelectProps = ({ label, setOptions, options }: SelectProps) => {
           </span>
         </summary>
 
-        <div className='z-50 group-open:absolute group-open:start-0 group-open:top-auto group-open:mt-2'>
-          <div className='w-96 rounded border border-gray-200 bg-white dark:border-gray-700 dark:bg-gray-900 dark:focus:ring-offset-gray-900'>
+        <div className='z-50 group-open:absolute md:group-open:start-0 group-open:top-auto group-open:mt-2 max-w-[250px]'>
+          <div className='w-96 max-w-full rounded border border-gray-200 bg-white dark:border-gray-700 dark:bg-gray-900 dark:focus:ring-offset-gray-900'>
             <header className='flex items-center justify-between p-4'>
               <span className='text-sm text-gray-700 dark:text-gray-200'>
                 {' '}

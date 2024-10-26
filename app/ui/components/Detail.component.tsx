@@ -1,9 +1,7 @@
-import { useAppSelector, useGetCharacter } from '@/app/lib/hooks'
-import { AnimatePresence, motion } from 'framer-motion'
+import { useGetCharacter } from '@/app/lib/hooks'
+import { motion } from 'framer-motion'
 import Image from 'next/image'
 import TransparentRick from '@/app/assets/Rick_Sanchez.png'
-import { useEffect } from 'react'
-import { Character } from '@/app/lib/models'
 
 const InfoBadge = ({ text }: { text: string }) => (
   <p className='text-2xl font-medium inline-block text-white py-2 px-4 fit-content rounded-xl bg-amber-600 w-fit'>
@@ -18,10 +16,10 @@ const CharacterDetail = ({
   id: string
   onClose: () => void
 }) => {
-  const { character, isLoading, error } = useGetCharacter(id)
+  const { character, isLoading } = useGetCharacter(id)
 
   return (
-    <AnimatePresence>
+    <div>
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -89,9 +87,8 @@ const CharacterDetail = ({
             <Image
               src={TransparentRick}
               alt='Rick'
-              width={348}
-              height={489}
-              objectFit='cover'
+              height={750}
+              className='object-cover'
             />
             <div className='top-0 left-0 absolute w-12 border-t-4 border-zinc-800' />
             <div className='bottom-0 left-0 absolute w-48 border-b-4 border-zinc-800' />
@@ -104,7 +101,7 @@ const CharacterDetail = ({
           </div>
         </motion.div>
       )}
-    </AnimatePresence>
+    </div>
   )
 }
 

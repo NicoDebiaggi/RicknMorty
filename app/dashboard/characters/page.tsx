@@ -1,12 +1,12 @@
 'use client'
-import { Filter, Galery, Paginator } from '@/app/ui/components'
+import { Filter, Galery, Paginator, Snackbar, showSnackbar } from '@/app/ui/components'
 import { useAppDispatch, useAppSelector } from '@/app/lib/hooks/useRedux.hook'
 import { setStatus, setName, setSpecies } from '@/app/lib/redux/slices'
 import { useGetCharacters } from '@/app/lib/hooks'
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 export default function CharactersPage () {
-  const { fetchPage, isLoading } = useGetCharacters()
+  const { fetchPage, isLoading, error } = useGetCharacters()
   const dispatch = useAppDispatch()
   const { status, name, species } = useAppSelector(
     state => state.characterFilters
@@ -27,6 +27,14 @@ export default function CharactersPage () {
       )
   }
 
+  const handleError = (error: string) => {
+    showSnackbar(error)
+  }
+
+  useEffect(() => {
+    error && handleError(error)
+  }, [error])
+
   return (
     <div className='w-full h-screen overflow-y-auto'>
       <div className='container mx-auto px-4 py-16 w-full h-screen flex flex-col items-center'>
@@ -42,6 +50,15 @@ export default function CharactersPage () {
             >
               {showFilters ? 'Hide Filters' : 'Show Filters'}
             </button>
+            <Paginator
+              page={characterPage.info.current}
+              styles='sm:hidden ml-4'
+              totalPages={characterPage.info.pages}
+              goToPrevPage={() => handlePageChange('prev')}
+              goToNextPage={() => handlePageChange('next')}
+              hasPrevPage={!characterPage.info.prev}
+              hasNextPage={!characterPage.info.next}
+            />
           </div>
 
           <div
@@ -74,6 +91,7 @@ export default function CharactersPage () {
             />
             <Paginator
               page={characterPage.info.current}
+              styles='hidden sm:inline-flex'
               totalPages={characterPage.info.pages}
               goToPrevPage={() => handlePageChange('prev')}
               goToNextPage={() => handlePageChange('next')}
@@ -84,6 +102,7 @@ export default function CharactersPage () {
         </div>
         <Galery characters={characterPage.results} isLoading={isLoading} />
       </div>
+      <Snackbar />
     </div>
   )
 }

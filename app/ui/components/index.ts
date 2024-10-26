@@ -4,3 +4,4 @@ export * from './Filters.component';
 export * from './Galery.component';
 export * from './Paginator.component';
 export * from './Sidebar.component';
+export * from './Snackbar.component';

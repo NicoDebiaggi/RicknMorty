@@ -8,7 +8,7 @@ interface GalleryProps {
 
 export const Galery = ({ characters, isLoading }: GalleryProps) => {
   return (
-    <div className='md:px-8 max-w-full pt-24 pb-8 container grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 w-screen'>
+    <div className='md:px-8 max-w-full pt-16 md:pt-24 pb-8 container grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 w-screen'>
       {isLoading && (
         <>
           {Array.from({ length: 20 }).map((_, index) => (
