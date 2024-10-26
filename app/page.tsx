@@ -12,7 +12,7 @@ export default function Home () {
           src={RickAndMortyLogo}
           width={500}
           alt='Rick and Morty'
-          className='z-[-1] w-2/3 mt-2 mb-16 md:my-24'
+          className='z-[-1] w-2/3 mt-2 mb-16 md:mb-0'
         />
         <h1 className='text-4xl md:text-6xl font-extrabold uppercase'>
           Welcome to the Multiverse!
