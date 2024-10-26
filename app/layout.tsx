@@ -5,7 +5,8 @@ import './assets/globals.css'
 const inter = Inter({ subsets: ['latin'] })
 export const metadata: Metadata = {
   title: 'Rick n Morty',
-  description: 'Rick n Morty is a popular animated series that follows the misadventures of an eccentric scientist and his good-hearted but fretful grandson.'
+  description:
+    'Rick n Morty is a popular animated series that follows the misadventures of an eccentric scientist and his good-hearted but fretful grandson.'
 }
 
 export default function RootLayout ({

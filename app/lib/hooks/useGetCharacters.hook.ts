@@ -1,5 +1,13 @@
-import { getCharacters, getNextCharacters, getCharacter } from '@/app/lib/services'
-import { adaptCharactersFirstPage, adaptCharactersNextPage, adaptCharacter } from '@/app/lib/adapters'
+import {
+  getCharacters,
+  getNextCharacters,
+  getCharacter
+} from '@/app/lib/services'
+import {
+  adaptCharactersFirstPage,
+  adaptCharactersNextPage,
+  adaptCharacter
+} from '@/app/lib/adapters'
 import { useEffect, useState } from 'react'
 import { useAppDispatch, useAppSelector } from './useRedux.hook'
 import { setResults } from '@/app/lib/redux/slices'
@@ -34,7 +42,7 @@ export const useGetCharacters = () => {
         status: selectedStatus
       })
       const adaptedCharacterPage = adaptCharactersFirstPage(response)
-      
+
       if (adaptedCharacterPage !== characterPage) {
         dispatch(setResults(adaptedCharacterPage))
       }
@@ -52,9 +60,12 @@ export const useGetCharacters = () => {
     setError(null)
     try {
       const response = await getNextCharacters(nextPageUrl)
-      const urlParams = new URLSearchParams(nextPageUrl.split('?')[1]);
-      const page = urlParams.get('page');
-      const adaptedCharacterPage = adaptCharactersNextPage(response, page ? parseInt(page) : 1)
+      const urlParams = new URLSearchParams(nextPageUrl.split('?')[1])
+      const page = urlParams.get('page')
+      const adaptedCharacterPage = adaptCharactersNextPage(
+        response,
+        page ? parseInt(page) : 1
+      )
       if (adaptedCharacterPage !== characterPage) {
         dispatch(setResults(adaptedCharacterPage))
       }
@@ -66,7 +77,11 @@ export const useGetCharacters = () => {
   }
 
   // Fetch characters on mount and whenever the filters change
-  useDebounce(() => fetchCharacters(name, species, status), 500, [name, species, status]) 
+  useDebounce(() => fetchCharacters(name, species, status), 500, [
+    name,
+    species,
+    status
+  ])
 
   return { fetchPage, isLoading, error }
 }
@@ -75,7 +90,9 @@ export const useGetCharacter = (id: string) => {
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [character, setCharacter] = useState<Character | null>(null)
-  const characterFromStore = useAppSelector(state => state.characterPage.results.find(c => c.id === Number(id)))
+  const characterFromStore = useAppSelector(state =>
+    state.characterPage.results.find(c => c.id === Number(id))
+  )
 
   useEffect(() => {
     if (characterFromStore) {
@@ -101,5 +118,4 @@ export const useGetCharacter = (id: string) => {
   }
 
   return { fetchCharacter, character, isLoading, error }
-
 }

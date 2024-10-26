@@ -6,7 +6,7 @@ export const makeStore = () => {
     reducer: {
       characterFilters: characterFiltersReducer,
       characterPage: characterPageReducer
-    },
+    }
   })
 }
 

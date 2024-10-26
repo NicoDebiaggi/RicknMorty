@@ -200,7 +200,7 @@ const SearchFilter = ({ label, value, setQuery }: SearchFilterProps) => {
         className='w-full px-4 py-2 border border-gray-200 rounded text-white dark:border-gray-400 dark:bg-gray-900 dark:focus:ring-offset-gray-900'
       />
     </div>
-  ) 
+  )
 }
 
 type FilterProps = {

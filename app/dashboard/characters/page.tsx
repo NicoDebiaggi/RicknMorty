@@ -1,5 +1,11 @@
 'use client'
-import { Filter, Galery, Paginator, Snackbar, showSnackbar } from '@/app/ui/components'
+import {
+  Filter,
+  Galery,
+  Paginator,
+  Snackbar,
+  showSnackbar
+} from '@/app/ui/components'
 import { useAppDispatch, useAppSelector } from '@/app/lib/hooks/useRedux.hook'
 import { setStatus, setName, setSpecies } from '@/app/lib/redux/slices'
 import { useGetCharacters } from '@/app/lib/hooks'

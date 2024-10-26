@@ -1,4 +1,8 @@
-import { Character, CharacterPageState, CharacterResObject } from '@/app/lib/models'
+import {
+  Character,
+  CharacterPageState,
+  CharacterResObject
+} from '@/app/lib/models'
 
 export const adaptCharactersFirstPage = (
   data: CharacterResObject
@@ -69,9 +73,7 @@ export const adaptCharactersNextPage = (
   }
 }
 
-export const adaptCharacter = (
-  data: Character
-): Character => {
+export const adaptCharacter = (data: Character): Character => {
   return {
     id: data.id,
     name: data.name,

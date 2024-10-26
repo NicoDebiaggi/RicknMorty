@@ -15,7 +15,9 @@ const SidebarButton = ({
     <li>
       <Link
         href={url}
-        className={`group relative flex justify-center rounded px-2 py-4 hover:bg-gray-700 ${active ? 'bg-gray-600' : ''}`}
+        className={`group relative flex justify-center rounded px-2 py-4 hover:bg-gray-700 ${
+          active ? 'bg-gray-600' : ''
+        }`}
       >
         {children}
 

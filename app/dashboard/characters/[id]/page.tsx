@@ -16,7 +16,10 @@ export default function CharacterDetail ({
       transition={{ duration: 0.5 }}
       layoutId={characterId}
     >
-      <Detail.Character id={characterId} onClose={() => router.push('/dashboard/characters')} />
+      <Detail.Character
+        id={characterId}
+        onClose={() => router.push('/dashboard/characters')}
+      />
     </motion.div>
   )
 }

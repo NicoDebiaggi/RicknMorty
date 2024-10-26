@@ -24,10 +24,15 @@ export const characterFiltersSlice = createSlice({
   name: 'characterFiltersSlice',
   initialState: characterFiltersInitialState,
   reducers: {
-    setStatus: (state, action: PayloadAction<{
-      value: string
-      selected: boolean
-    }[]>) => {
+    setStatus: (
+      state,
+      action: PayloadAction<
+        {
+          value: string
+          selected: boolean
+        }[]
+      >
+    ) => {
       state.status = action.payload
     },
     setName: (state, action: PayloadAction<string>) => {

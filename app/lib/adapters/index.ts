@@ -1,1 +1,1 @@
-export * from './adaptCharacters.adapter';
+export * from './adaptCharacters.adapter'
