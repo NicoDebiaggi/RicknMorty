@@ -1,13 +1,8 @@
 import { Character } from '@/app/lib/models'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
-const CharacterCard = ({
-  character,
-  onClick
-}: {
-  character: Character
-  onClick: (id: number) => void
-}) => {
+import Link from 'next/link'
+const CharacterCard = ({ character }: { character: Character }) => {
   return (
     <motion.div
       className='group relative block bg-black h-64'
@@ -32,7 +27,10 @@ const CharacterCard = ({
 
         <div className='absolute top-48'>
           <div className='translate-y-8 transform opacity-0 transition-all group-hover:translate-y-0 group-hover:opacity-100'>
-            <button onClick={() => onClick(character.id)} className='p-2 bg-gray-800 text-white rounded-lg flex items-center'>
+            <Link
+              href={`/dashboard/characters/${character.id}`}
+              className='p-2 bg-gray-800 text-white rounded-lg flex items-center'
+            >
               View Details
               <svg
                 xmlns='http://www.w3.org/2000/svg'
@@ -48,7 +46,7 @@ const CharacterCard = ({
                   d='M9 5l7 7-7 7'
                 />
               </svg>
-            </button>
+            </Link>
           </div>
         </div>
       </div>

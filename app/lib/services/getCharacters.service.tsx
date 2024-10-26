@@ -16,6 +16,18 @@ export const getNextCharacters = async (url: string) => {
   }
 }
 
+export const getCharacter = async (id: string) => {
+  const API_URL = process.env.NEXT_PUBLIC_API_BASE_URL
+
+  try {
+    const response = await Axios.get(`${API_URL}/character/${id}`)
+    return response.data
+  } catch (error) {
+    console.error('Error retrieving character data:', error)
+    throw error
+  }
+}
+
 export const getCharacters = async ({ name, status, species }: getCharactersProps) => {
   const API_URL = process.env.NEXT_PUBLIC_API_BASE_URL
 

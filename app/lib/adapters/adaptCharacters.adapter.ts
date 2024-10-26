@@ -1,6 +1,8 @@
-import { CharacterPageState, CharacterResObject } from '@/app/lib/models'
+import { Character, CharacterPageState, CharacterResObject } from '@/app/lib/models'
 
-export const adaptCharactersFirstPage = (data: CharacterResObject): CharacterPageState => {
+export const adaptCharactersFirstPage = (
+  data: CharacterResObject
+): CharacterPageState => {
   return {
     info: {
       count: data.info.count,
@@ -9,7 +11,7 @@ export const adaptCharactersFirstPage = (data: CharacterResObject): CharacterPag
       prev: data.info.prev,
       current: 1
     },
-    results: data.results.map((character) => ({
+    results: data.results.map(character => ({
       id: character.id,
       name: character.name,
       status: character.status,
@@ -32,7 +34,10 @@ export const adaptCharactersFirstPage = (data: CharacterResObject): CharacterPag
   }
 }
 
-export const adaptCharactersNextPage = (data: CharacterResObject, page: number): CharacterPageState => {
+export const adaptCharactersNextPage = (
+  data: CharacterResObject,
+  page: number
+): CharacterPageState => {
   return {
     info: {
       count: data.info.count,
@@ -41,7 +46,7 @@ export const adaptCharactersNextPage = (data: CharacterResObject, page: number):
       prev: data.info.prev,
       current: page
     },
-    results: data.results.map((character) => ({
+    results: data.results.map(character => ({
       id: character.id,
       name: character.name,
       status: character.status,
@@ -61,5 +66,30 @@ export const adaptCharactersNextPage = (data: CharacterResObject, page: number):
       url: character.url,
       created: character.created
     }))
+  }
+}
+
+export const adaptCharacter = (
+  data: Character
+): Character => {
+  return {
+    id: data.id,
+    name: data.name,
+    status: data.status,
+    species: data.species,
+    type: data.type,
+    gender: data.gender,
+    origin: {
+      name: data.origin.name,
+      url: data.origin.url
+    },
+    location: {
+      name: data.location.name,
+      url: data.location.url
+    },
+    image: data.image,
+    episode: data.episode,
+    url: data.url,
+    created: data.created
   }
 }

@@ -9,7 +9,6 @@ export default function DashboardLayout ({
   children: React.ReactNode
 }) {
   const pathname = usePathname()
-
   return (
     <div className='flex h-screen w-screen justify-between'>
       <Sidebar>

@@ -5,8 +5,7 @@ import { setStatus, setName, setSpecies } from '@/app/lib/redux/slices'
 import { useGetCharacters } from '@/app/lib/hooks'
 import { useRef, useState } from 'react'
 
-export default function CharactersPage ({params}: {params: {id: string}}) {
-  console.log(params)
+export default function CharactersPage () {
   const { fetchPage, isLoading } = useGetCharacters()
   const dispatch = useAppDispatch()
   const { status, name, species } = useAppSelector(

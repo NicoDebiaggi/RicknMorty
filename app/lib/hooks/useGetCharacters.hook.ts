@@ -1,9 +1,10 @@
-import { getCharacters, getNextCharacters } from '@/app/lib/services'
-import { adaptCharactersFirstPage, adaptCharactersNextPage } from '@/app/lib/adapters'
-import { useState } from 'react'
+import { getCharacters, getNextCharacters, getCharacter } from '@/app/lib/services'
+import { adaptCharactersFirstPage, adaptCharactersNextPage, adaptCharacter } from '@/app/lib/adapters'
+import { useEffect, useState } from 'react'
 import { useAppDispatch, useAppSelector } from './useRedux.hook'
 import { setResults } from '@/app/lib/redux/slices'
 import { useDebounce } from './useDebounce.hook'
+import { Character } from '../models'
 
 export const useGetCharacters = () => {
   const { name, species, status } = useAppSelector(
@@ -68,4 +69,37 @@ export const useGetCharacters = () => {
   useDebounce(() => fetchCharacters(name, species, status), 500, [name, species, status]) 
 
   return { fetchPage, isLoading, error }
+}
+
+export const useGetCharacter = (id: string) => {
+  const [isLoading, setIsLoading] = useState(false)
+  const [error, setError] = useState<string | null>(null)
+  const [character, setCharacter] = useState<Character | null>(null)
+  const characterFromStore = useAppSelector(state => state.characterPage.results.find(c => c.id === Number(id)))
+
+  useEffect(() => {
+    if (characterFromStore) {
+      setCharacter(characterFromStore)
+    } else {
+      fetchCharacter(id)
+    }
+  }, [id, characterFromStore])
+
+  const fetchCharacter = async (id: string) => {
+    setIsLoading(true)
+    setError(null)
+    try {
+      const response = await getCharacter(id)
+      const adaptedCharacter = adaptCharacter(response)
+      setCharacter(adaptedCharacter)
+    } catch (error) {
+      console.error('Error fetching character:', error)
+      setError('Error fetching character')
+    } finally {
+      setIsLoading(false)
+    }
+  }
+
+  return { fetchCharacter, character, isLoading, error }
+
 }
