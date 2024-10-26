@@ -87,8 +87,7 @@ const CharacterDetail = ({
             <Image
               src={TransparentRick}
               alt='Rick'
-              height={750}
-              className='object-cover'
+              className='h-[80vh] w-fit object-contain'
             />
             <div className='top-0 left-0 absolute w-12 border-t-4 border-zinc-800' />
             <div className='bottom-0 left-0 absolute w-48 border-b-4 border-zinc-800' />
